@@ -20,4 +20,13 @@ public class StringTest {
         Assertions.assertThat(value).isEqualTo("1,2");
     }
 
+    @Test
+    @DisplayName("문자열 인덱스 불러오기")
+    void charAt() {
+        String value = "abc";
+        Assertions.assertThatThrownBy(() -> {
+            value.charAt(4);
+        }).isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: ");
+    }
 }
