@@ -13,6 +13,7 @@ import java.util.Set;
 
 public class SetTest {
     private Set numbers;
+
     @BeforeEach
     void setUp() {
         numbers = new HashSet<>();
@@ -31,14 +32,14 @@ public class SetTest {
 
     @ParameterizedTest
     @DisplayName("값이 포함되었는지 확인하는 테스트")
-    @ValueSource(ints = { 1,2,3 })
+    @ValueSource(ints = {1, 2, 3})
     void contains(Integer number) {
         Assertions.assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
     @DisplayName("값이 포함되어 있는지 아닌지 확인하는 테스트")
-    @CsvSource(value = { "1:true", "2:true", "3:true", "5:false"}, delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "5:false"}, delimiter = ':')
     void containsOrNot(String input, String value) {
         Assertions.assertThat(numbers.contains(Integer.parseInt(input))).isEqualTo(Boolean.parseBoolean(value));
     }

@@ -5,29 +5,19 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Calculator {
-    public static float calculate(String[] values) {
-        float result = 0;
+    public static double calculate(String[] values) {
+        double result = 0;
         Queue<String> elements = new LinkedList<>(Arrays.asList(values));
-        result = Float.parseFloat(elements.poll());
+        result = Double.parseDouble(elements.poll());
         while (!elements.isEmpty()) {
             String operator = elements.poll();
-            float operand = Float.parseFloat(elements.poll());
+            Double operand = Double.parseDouble(elements.poll());
             result = calculateEach(result, operator, operand);
         }
         return result;
     }
 
-    private static float calculateEach(float result, String operator, float operand) {
-        switch (operator) {
-            case "+":
-                return result + operand;
-            case "-":
-                return result - operand;
-            case "/":
-                return result / operand;
-            case "*":
-                return result * operand;
-        }
-        throw new IllegalArgumentException("올바르지 않은 계산식입니다!");
+    private static double calculateEach(double result, String operator, double operand) {
+        return Operator.of(operator).calculate(result,operand);
     }
 }
