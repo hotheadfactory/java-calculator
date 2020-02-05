@@ -33,14 +33,14 @@ public class SetTest {
     @ParameterizedTest
     @DisplayName("값이 포함되었는지 확인하는 테스트")
     @ValueSource(ints = {1, 2, 3})
-    void contains(Integer number) {
+    void contains(int number) {
         Assertions.assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
     @DisplayName("값이 포함되어 있는지 아닌지 확인하는 테스트")
     @CsvSource(value = {"1:true", "2:true", "3:true", "5:false"}, delimiter = ':')
-    void containsOrNot(String input, String value) {
-        Assertions.assertThat(numbers.contains(Integer.parseInt(input))).isEqualTo(Boolean.parseBoolean(value));
+    void containsOrNot(int input, boolean value) {
+        Assertions.assertThat(numbers.contains(input)).isEqualTo(value);
     }
 }
