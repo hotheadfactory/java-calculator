@@ -28,5 +28,10 @@ public class StringTest {
             value.charAt(4);
         }).isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: ");
+
+        Assertions.assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> {
+                    value.charAt(4);
+                }).withMessageMatching("String index out of range: \\d");
     }
 }
