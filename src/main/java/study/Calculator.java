@@ -17,6 +17,6 @@ public class Calculator {
     }
 
     private static double calculateEach(double result, String operator, double operand) {
-        return Operator.of(operator).calculate(result,operand);
+        return Operator.of(operator).calculate(result, operand);
     }
 }
